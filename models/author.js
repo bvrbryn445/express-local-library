@@ -31,8 +31,8 @@ AuthorSchema.virtual("url").get(function () {
 
 AuthorSchema.virtual("lifespan").get(function () {
 	const dateOfDeath = this.date_of_death ? DateTime.fromJSDate(this.date_of_death).toLocaleString(DateTime.DATE_MED) : 'present'
-	const dateOfBirth = this.date_of_birth ? DateTime.fromJSDate(this.date_of_birth).toLocaleString(DateTime.DATE_MED) : ''
-	return this.date_of_birth
+	const dateOfBirth = this.date_of_birth ? DateTime.fromJSDate(this.date_of_birth).toLocaleString(DateTime.DATE_MED) : '??'
+	return this.date_of_birth || this.date_of_death
 		? `${dateOfBirth} - ${dateOfDeath}`
 		: '';
 });
